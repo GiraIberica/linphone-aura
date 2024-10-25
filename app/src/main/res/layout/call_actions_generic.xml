@@ -61,7 +61,7 @@
             app:layout_constraintHorizontal_bias="1"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/hang_up"
+            app:layout_constraintStart_toEndOf="@id/door"
             app:layout_constraintEnd_toStartOf="@id/toggle_mute_mic" />
 
         <ImageView
@@ -94,6 +94,23 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/toggle_mute_mic"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/door"
+            android:layout_width="@dimen/call_button_size"
+            android:layout_height="@dimen/call_button_size"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/shape_squircle_green_background"
+            android:contentDescription="@string/content_description_open_door"
+            android:onClick="@{() -> viewModel.abrePuerta()}"
+            android:padding="@dimen/call_button_icon_padding"
+            android:src="@drawable/door"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/toggle_video"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/hang_up"
+            app:tint="@color/in_call_button_tint_color" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

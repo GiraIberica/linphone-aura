@@ -21,6 +21,8 @@ package org.linphone.ui.call.viewmodel
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Handler
+import android.os.Looper
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
@@ -753,6 +755,22 @@ class CurrentCallViewModel @UiThread constructor() : GenericViewModel() {
                 }
             }
         }
+    }
+
+    @UiThread
+    fun abrePuerta() {
+        currentCall.sendDtmfs("*0")
+
+        // Crear un Handler asociado al hilo principal (UI thread)
+        val handler = Handler(Looper.getMainLooper())
+
+        // Colgamos después de 5 segundos
+        handler.postDelayed(
+            Runnable {
+                hangUp()
+            },
+            5000
+        )
     }
 
     @UiThread
