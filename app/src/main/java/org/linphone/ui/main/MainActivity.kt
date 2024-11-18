@@ -521,7 +521,7 @@ class MainActivity : GenericActivity() {
                 Log.w("$TAG No account found, showing Assistant activity")
                 coreContext.postOnMainThread {
                     try {
-                        startActivity(Intent(this, AssistantActivity::class.java))
+                        // startActivity(Intent(this, AssistantActivity::class.java))
                     } catch (ise: IllegalStateException) {
                         Log.e("$TAG Can't start activity: $ise")
                     }
