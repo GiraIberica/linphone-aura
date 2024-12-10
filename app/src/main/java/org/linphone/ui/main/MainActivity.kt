@@ -415,7 +415,14 @@ class MainActivity : GenericActivity() {
                 navOptionsBuilder.setLaunchSingleTop(true)
                 val navOptions = navOptionsBuilder.build()
                 val args = bundleOf()
-                when (defaultFragmentId) {
+                // Vamos directamente al fragment de Contactos
+                findNavController().addOnDestinationChangedListener(destinationListener)
+                findNavController().navigate(
+                    R.id.contactsListFragment,
+                    args,
+                    navOptions
+                )
+/*                when (defaultFragmentId) {
                     CONTACTS_FRAGMENT_ID -> {
                         findNavController().addOnDestinationChangedListener(destinationListener)
                         findNavController().navigate(
@@ -444,7 +451,7 @@ class MainActivity : GenericActivity() {
                         Log.i("$TAG Default fragment is the same as the latest visited one")
                         navigatedToDefaultFragment = true
                     }
-                }
+                }*/
             } catch (ise: IllegalStateException) {
                 Log.e("$TAG Can't navigate to Conversations fragment: $ise")
             }

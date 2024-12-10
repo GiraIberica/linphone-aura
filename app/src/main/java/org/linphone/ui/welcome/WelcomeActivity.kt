@@ -19,7 +19,6 @@
  */
 package org.linphone.ui.welcome
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
@@ -36,7 +35,6 @@ import org.linphone.R
 import org.linphone.core.tools.Log
 import org.linphone.databinding.WelcomeActivityBinding
 import org.linphone.ui.GenericActivity
-import org.linphone.ui.assistant.AssistantActivity
 import org.linphone.ui.welcome.fragment.WelcomePage1Fragment
 import org.linphone.ui.welcome.fragment.WelcomePage2Fragment
 import org.linphone.ui.welcome.fragment.WelcomePage3Fragment
@@ -105,9 +103,9 @@ class WelcomeActivity : GenericActivity() {
 
     private fun goToAssistant() {
         finish()
-        val intent = Intent(this, AssistantActivity::class.java)
+/*        val intent = Intent(this, AssistantActivity::class.java)
         intent.putExtra(AssistantActivity.SKIP_LANDING_EXTRA, true)
-        startActivity(intent)
+        startActivity(intent)*/
     }
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {

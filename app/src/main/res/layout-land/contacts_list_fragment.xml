@@ -116,12 +116,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:src="@drawable/illu"
                     android:contentDescription="@null"
-                    app:layout_constraintHeight_max="200dp"
+                    android:src="@drawable/sclick_linphone_splashscreen"
                     app:layout_constraintBottom_toTopOf="@id/no_contacts_label"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_max="200dp"
                     app:layout_constraintStart_toEndOf="@id/bottom_nav_bar"
                     app:layout_constraintTop_toBottomOf="@id/lists" />
 
