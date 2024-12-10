@@ -1,7 +1,7 @@
 <resources>
     <style name="AppSplashScreenTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/linphone_splashscreen</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/sclick_linphone_splashscreen</item>
         <item name="postSplashScreenTheme">@style/Theme.Linphone</item>
     </style>
 
@@ -16,9 +16,12 @@
 
         <item name="color_main1_100">@color/orange_main_100</item>
         <item name="color_main1_100_alpha_50">@color/orange_main_100_alpha_50</item>
-        <item name="color_main1_300">@color/orange_main_300</item>
+<!--        <item name="color_main1_300">@color/orange_main_300</item>
         <item name="color_main1_500">@color/orange_main_500</item>
-        <item name="color_main1_700">@color/orange_main_700</item>
+        <item name="color_main1_700">@color/orange_main_700</item>-->
+        <item name="color_main1_300">@color/gray_400</item>
+        <item name="color_main1_500">@color/gray_500</item>
+        <item name="color_main1_700">@color/gray_800</item>
 
         <item name="color_main2_000">@color/white</item>
         <item name="color_main2_100">@color/gray_main2_100</item>
