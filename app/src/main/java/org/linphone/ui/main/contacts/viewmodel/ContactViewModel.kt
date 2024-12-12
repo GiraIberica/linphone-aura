@@ -241,7 +241,7 @@ class ContactViewModel @UiThread constructor() : GenericViewModel() {
     init {
         isStored.value = false
 
-        expandNumbersAndAddresses.value = true
+        expandNumbersAndAddresses.value = false
         trustedDevicesPercentage.value = 0
 
         atLeastOneSipAddressOrPhoneNumber.value = false
