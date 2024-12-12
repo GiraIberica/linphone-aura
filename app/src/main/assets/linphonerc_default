@@ -50,6 +50,6 @@ fec_enabled=1
 return_empty_friends=1
 
 [ui]
-contacts_filter=sip.linphone.org
+contacts_filter=
 
 ## End of default rc

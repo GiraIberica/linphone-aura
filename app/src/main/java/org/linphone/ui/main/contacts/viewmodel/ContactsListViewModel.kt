@@ -176,7 +176,7 @@ class ContactsListViewModel @UiThread constructor() : AbstractMainViewModel() {
         isDefaultAccountLinphone.postValue(defaultDomain)
 
         Log.i("$TAG Currently selected filter is [${corePreferences.contactsFilter}]")
-        domainFilter = corePreferences.contactsFilter
+        domainFilter = "" // corePreferences.contactsFilter
         if (isEndToEndEncryptionMandatory() && (domainFilter.isEmpty() || domainFilter == "*")) {
             domainFilter = corePreferences.defaultDomain
             corePreferences.contactsFilter = domainFilter
