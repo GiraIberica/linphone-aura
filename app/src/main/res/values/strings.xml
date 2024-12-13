@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 <!DOCTYPE resources [
-    <!ENTITY appName "Linphone">
+    <!ENTITY appName "AURA Door Intercom">
 ]>
 
 <resources>
-    <string name="app_name" translatable="false">&appName;</string>
+    <string name="app_name" translatable="false">AURA Door Intercom</string>
 
     <!-- Not translatable strings -->
     <string name="vertical_separator" translatable="false">|</string>
