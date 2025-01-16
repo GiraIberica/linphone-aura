@@ -401,6 +401,7 @@ class ContactsManager @UiThread constructor() {
         )
 
         val key = friend.refKey ?: LinphoneUtils.getAddressAsCleanStringUriOnly(address)
+
         val foundInMap = getAvatarModelFromCache(key)
         if (foundInMap != null) {
             Log.d("$TAG Found avatar model in map using SIP URI [$key]")

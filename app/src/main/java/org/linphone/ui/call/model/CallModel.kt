@@ -69,8 +69,8 @@ class CallModel @WorkerThread constructor(val call: Call) {
         contact.postValue(avatarModel)
         displayName.postValue(
             avatarModel.friend.name ?: LinphoneUtils.getDisplayName(remoteAddress)
-        )
 
+        )
         state.postValue(LinphoneUtils.callStateToString(call.state))
         isPaused.postValue(LinphoneUtils.isCallPaused(call.state))
     }

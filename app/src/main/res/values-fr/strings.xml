@@ -743,4 +743,6 @@
     <!-- Keep <b></b> in the following strings translations! -->
     <string name="conversation_message_meeting_updated_label"><b>La réunion a été mise à jour</b></string>
     <string name="conversation_message_meeting_cancelled_label"><b>La réunion a été annulée</b></string>
+    <string name="contact_doors_label">Portes</string>
+    <string name="contact_door_hint">Porte 1+00*</string>
 </resources>

@@ -890,4 +890,7 @@
             com.google.android.apps.automotive.templates.host</item>
         </string-array>
     <string name="content_description_open_door">Open door</string>
+    <string name="default_door_name" translatable="false">door</string>
+    <string name="contact_doors_label">Doors</string>
+    <string name="contact_door_hint">Puerta 1+00*</string>
 </resources>

@@ -827,5 +827,7 @@
     <string name="content_description_ldap_delete">Usuń tę konfigurację LDAP</string>
     <string name="content_description_ldap_save">Zapisz konfigurację LDAP</string>
     <string name="content_description_play_call_recording">Odtwórz nagranie rozmowy</string>
+    <string name="contact_doors_label">Drzwi</string>
+    <string name="contact_door_hint">Drzwi 1+00*</string>
 
 </resources>

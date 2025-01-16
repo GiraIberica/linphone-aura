@@ -235,6 +235,12 @@ class CurrentCallViewModel @UiThread constructor() : GenericViewModel() {
         MutableLiveData<Event<Boolean>>()
     }
 
+    data class DtmfEntry(val nombre: String, val dtmf: String)
+
+    private val dtmfEntries = mutableListOf<DtmfEntry>()
+
+    val CUELGA_DELAY = 5000
+
     lateinit var currentCall: Call
 
     private val callListener = object : CallListenerStub() {
@@ -758,19 +764,78 @@ class CurrentCallViewModel @UiThread constructor() : GenericViewModel() {
     }
 
     @UiThread
-    fun abrePuerta() {
-        currentCall.sendDtmfs("*0")
+    fun sendDtmf(pos: Int) {
+        if (::currentCall.isInitialized) {
+            val dtmf = dtmfEntries[pos].dtmf
+            Log.i("$TAG Sending DTMF [$dtmf]")
+            currentCall.sendDtmfs(dtmf)
+            cuelgaLlamada(CUELGA_DELAY)
+        }
+    }
 
+    fun checkDtmfArraySize(size: Int): Boolean {
+        // Log.i("$TAG checkDtmfArraySize [$size] => [${dtmfEntries.size}]")
+        return dtmfEntries.size >= size
+    }
+
+    fun getPuertaName(pos: Int): String {
+        return dtmfEntries[pos].nombre
+    }
+
+    fun cuelgaLlamada(sleepMillis: Int) {
         // Crear un Handler asociado al hilo principal (UI thread)
         val handler = Handler(Looper.getMainLooper())
 
-        // Colgamos después de 5 segundos
+        // Colgamos después
         handler.postDelayed(
             Runnable {
                 hangUp()
             },
-            5000
+            sleepMillis.toLong()
         )
+    }
+
+    private fun fillDtmfEntries(callFriendName: String) {
+        dtmfEntries.clear()
+
+        var friendEncontrado = false
+        // Buscamos las puertas y sus dtmf
+        for (friendList in coreContext.core.friendsLists) {
+            friendList.friends.forEach { friend ->
+
+                if (friend.name.equals(callFriendName)) {
+                    friendEncontrado = true
+                    Log.i("$TAG Found friend [${friend.name}]")
+
+                    friend.phoneNumbers.forEachIndexed { index, phoneNumber ->
+
+                        val nombre = phoneNumber.substringBefore(delimiter = "+")
+                        val dtmf = phoneNumber.substringAfter(delimiter = "+")
+
+                        dtmfEntries.add(DtmfEntry(nombre, dtmf))
+                        // Log.i("$TAG Puerta -> $nombre: $dtmf")
+                    }
+                }
+            }
+        }
+        if (!friendEncontrado) {
+            Log.i("$TAG No friend found with name [${contact.value?.friend?.name}]")
+        }
+    }
+
+    @UiThread
+    fun abrePuerta() {
+        // Buscamos las puertas y sus dtmf
+
+        if (dtmfEntries.size == 1) {
+            // Log.i("$TAG Single phone number found")
+            val dtmf = dtmfEntries[0].dtmf
+            currentCall.sendDtmfs(dtmf)
+
+            cuelgaLlamada(CUELGA_DELAY)
+        } else {
+            toggleExpandActionsMenu()
+        }
     }
 
     @UiThread
@@ -1130,6 +1195,7 @@ class CurrentCallViewModel @UiThread constructor() : GenericViewModel() {
             }
         }
 
+        fillDtmfEntries(model.friend.name.toString())
         contact.postValue(model)
         displayedName.postValue(model.friend.name)
 
