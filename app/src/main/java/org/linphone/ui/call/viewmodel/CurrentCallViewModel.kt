@@ -803,7 +803,7 @@ class CurrentCallViewModel @UiThread constructor() : GenericViewModel() {
         for (friendList in coreContext.core.friendsLists) {
             friendList.friends.forEach { friend ->
 
-                if (friend.name.equals(callFriendName)) {
+                if (friend.address?.domain.equals(callFriendName)) {
                     friendEncontrado = true
                     Log.i("$TAG Found friend [${friend.name}]")
 
@@ -1195,7 +1195,7 @@ class CurrentCallViewModel @UiThread constructor() : GenericViewModel() {
             }
         }
 
-        fillDtmfEntries(model.friend.name.toString())
+        fillDtmfEntries(model.friend.address?.domain.toString())
         contact.postValue(model)
         displayedName.postValue(model.friend.name)
 
